@@ -1,5 +1,7 @@
 # Local Dashboard Telemetry
 
+[![Tests](https://github.com/Scottimus/Local-Dashboard-Telemetry/actions/workflows/tests.yml/badge.svg)](https://github.com/Scottimus/Local-Dashboard-Telemetry/actions/workflows/tests.yml)
+
 A localhost service with GPU/system snapshots and a small browser panel. GPU field normalization and cache behavior are adapted from an existing PowerShell dashboard backend into a focused Python service.
 
 ```sh
