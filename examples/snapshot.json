@@ -1,0 +1,1 @@
+{"gpu":{"name":"Example GPU","utilization":24,"powerDraw":45,"powerLimit":150,"temperature":48,"memoryUsedMiB":2048,"memoryTotalMiB":8192,"memoryUsedPercent":25},"system":{"platform":"Example OS","cpuCount":8,"cpuPercent":18,"memoryUsedPercent":42,"memoryTotalMiB":16384}}

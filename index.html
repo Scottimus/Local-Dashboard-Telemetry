@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local telemetry</title>
+<style>body{font:1rem/1.6 system-ui;background:#12212c;color:#edf5f8;max-width:50rem;margin:3rem auto;padding:1rem}section{background:#203542;border-radius:1rem;padding:1rem;margin:1rem 0}pre{white-space:pre-wrap;overflow-wrap:anywhere}button{padding:.7rem 1rem;font:inherit;border-radius:.5rem}</style>
+<h1>Local telemetry</h1><p>Machine snapshots with explicit cache and sample indicators.</p>
+<button id="refresh">Refresh snapshots</button><div id="panels" aria-live="polite"></div>
+<script>
+async function refresh() {
+  const panels = document.getElementById('panels');
+  panels.replaceChildren();
+  for (const sensor of ['gpu', 'system']) {
+    const section = document.createElement('section');
+    const heading = document.createElement('h2');
+    heading.textContent = sensor.toUpperCase();
+    const result = document.createElement('pre');
+    try {
+      const response = await fetch('/api/' + sensor);
+      result.textContent = JSON.stringify(await response.json(), null, 2);
+    } catch (error) {
+      result.textContent = 'Service unavailable. Try refreshing.';
+    }
+    section.append(heading, result);
+    panels.append(section);
+  }
+}
+document.getElementById('refresh').addEventListener('click', refresh);
+refresh();
+</script></html>
